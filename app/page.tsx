@@ -7,7 +7,7 @@ import "./../app/app.css";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
-import { Authenticator } from '@aws-amplify/ui-react'
+import { Authenticator } from '@aws-amplify/ui-react';
 
 Amplify.configure(outputs);
 
@@ -46,8 +46,7 @@ export default function App() {
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <li 
-            onClick={() => deleteTodo(todo.id)}
+          <li onClick={() => deleteTodo(todo.id)}
             key={todo.id}>{todo.content}</li>
         ))}
       </ul>
@@ -58,7 +57,7 @@ export default function App() {
           Review next steps of this tutorial.
         </a>
       </div>
-                <button onClick={signOut}>Sign out</button>
+     <button onClick={signOut}>Sign out</button>
     </main>
       )]
           </Authenticator>
