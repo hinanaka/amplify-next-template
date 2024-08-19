@@ -14,15 +14,8 @@ Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
 
-const schema = a.schema({
-  Todo: a.model({
-    content: a.string().required(),
-    notes: a.string().array(),
-  }),
-});
-
 export default function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [category,todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
   function listTodos() {
     client.models.Todo.observeQuery().subscribe({
@@ -33,6 +26,12 @@ export default function App() {
   useEffect(() => {
     listTodos();
   }, []);
+
+  function categoryTodo(){
+    client.models.Todo.create({
+      content: window.prompt("category Todo content"),
+  });
+  }
 
   function createTodo() {
     client.models.Todo.create({
@@ -50,7 +49,17 @@ export default function App() {
       {({ signOut, user }) => (
       
     <main>
+      
+      <button onClick={categoryTodo}>+ new</button>
+      <ul>
+        {categorytodos.map((category) => (
+      <li onClick={() => categoryTodo(category/id)}
+        key={category.id}>{category.content}</li>
+      ))}
+      </ul>
+      
       <h1>My todos</h1>
+      <h3>category</h3>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
@@ -58,6 +67,7 @@ export default function App() {
             key={todo.id}>{todo.content}</li>
         ))}
       </ul>
+      
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />
@@ -68,6 +78,3 @@ export default function App() {
      <button onClick={signOut}>Sign out</button>
     </main>
       )}
-          </Authenticator>
-  )
-}
