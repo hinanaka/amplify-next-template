@@ -29,7 +29,7 @@ export default function App() {
 
   function categoryTodo(){
     client.models.Todo.create({
-      content: window.prompt("category Todo content"),
+      content: window.prompt("Todo category"),
   });
   }
 
@@ -54,7 +54,7 @@ export default function App() {
       <ul>
         {categorytodos.map((category) => (
       <li onClick={() => categoryTodo(category/id)}
-        key={category.id}>{category.content}</li>
+        key={category.id}>{todo.content}</li>
       ))}
       </ul>
       
