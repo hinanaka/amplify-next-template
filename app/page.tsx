@@ -15,7 +15,7 @@ Amplify.configure(outputs);
 const client = generateClient<Schema>();
 
 export default function App() {
-  const [category,todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
   function listTodos() {
     client.models.Todo.observeQuery().subscribe({
@@ -26,12 +26,6 @@ export default function App() {
   useEffect(() => {
     listTodos();
   }, []);
-
-  function categoryTodo(){
-    client.models.Todo.create({
-      content: window.prompt("Todo category"),
-  });
-  }
 
   function createTodo() {
     client.models.Todo.create({
@@ -49,17 +43,7 @@ export default function App() {
       {({ signOut, user }) => (
       
     <main>
-      
-      <button onClick={categoryTodo}>+ new</button>
-      <ul>
-        {categorytodos.map((category) => (
-      <li onClick={() => categoryTodo(category/id)}
-        key={category.id}>{todo.content}</li>
-      ))}
-      </ul>
-      
       <h1>My todos</h1>
-      <h3>category</h3>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
@@ -67,7 +51,6 @@ export default function App() {
             key={todo.id}>{todo.content}</li>
         ))}
       </ul>
-      
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />
