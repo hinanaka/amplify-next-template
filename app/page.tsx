@@ -36,6 +36,13 @@ export default function App() {
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id })
   }
+
+  const schema = a.schema({
+  Todo: a.model({
+    content: a.string().required(),
+    notes: a.string().array(),
+  }),
+});
   
   return (
         
