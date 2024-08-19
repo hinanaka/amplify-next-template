@@ -43,6 +43,10 @@ export default function App() {
       {({ signOut, user }) => (
       
     <main>
+
+      <h1>category</h1>
+      <button onClick={createCategory}>+ new</button>
+      
       <h1>My todos</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
