@@ -30,7 +30,7 @@ export default function App() {
 
   //作成
   const createTodo = () => {
-    client.models.Todo.create({
+      client.models.Todo.create({
       content: window.prompt('Todo content'),
     });
   }
@@ -54,7 +54,7 @@ export default function App() {
       {({ signOut, user }) => (
 
     <main>
-      <h1>TODO LIST</h1>
+      <h1>💗TODO LIST💗</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
@@ -64,7 +64,7 @@ export default function App() {
         ))}
       </ul>
       <div>
-        🥳 App successfully hosted. Try creating a new todo.
+      新しいTODOを作成してみてください🐻
         <br />
         <a href='https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/'>
           Review next steps of this tutorial.
