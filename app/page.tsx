@@ -31,7 +31,7 @@ export default function App() {
   //作成
   const createTodo = () => {
     client.models.Todo.create({
-      content: window.prompt('Todo content','Category content'),
+      content: window.prompt('Todo content'),
     });
   }
 
@@ -55,10 +55,10 @@ export default function App() {
 
     <main>
       <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>                 //Todo作るボタン
+      <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <li onClick={() => deleteTodo(todo.id)} key={todo.id}>  //削除
+          <li onClick={() => deleteTodo(todo.id)} key={todo.id}>
             {todo.content}
           </li>
         ))}
@@ -70,7 +70,7 @@ export default function App() {
           Review next steps of this tutorial.
         </a>
       </div>
-          <button onClick={signOut}>Sign out</button>              //ログアウトボタン
+          <button onClick={signOut}>Sign out</button>
     </main>
       )}
       </Authenticator>
