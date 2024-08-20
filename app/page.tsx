@@ -36,11 +36,11 @@ export default function App() {
   }
 
   //カテゴリ
-  //const createCaregory = () => {
-  //  client.models.Todo.create({
-  //    content: window.prompt('Category content'),
-  //  })
-  //}
+  const createCaregory = () => {
+    client.models.Todo.create({
+      content: window.prompt('Category content'),
+        })
+  }
 
   //削除
   function deleteTodo(id: string) {
@@ -54,7 +54,7 @@ export default function App() {
       {({ signOut, user }) => (
 
     <main>
-      <h1>My todos</h1>
+      <h1>TODO LIST</h1>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
@@ -70,7 +70,7 @@ export default function App() {
           Review next steps of this tutorial.
         </a>
       </div>
-          <button onClick={signOut}>Sign out</button>
+          <button onClick={signOut}>サインアウト</button>
     </main>
       )}
       </Authenticator>
