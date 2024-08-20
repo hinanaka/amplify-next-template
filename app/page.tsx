@@ -27,7 +27,14 @@ export default function App() {
   useEffect(() => {
     listTodos();
   }, []);
-  
+
+  //カテゴリ
+  fubnction createCategory() {
+    client.models.Todo.create({
+      content: window.prompt('カテゴリー'),
+      })
+  }
+
   //TODO作成
   function createTodo() {
     client.models.Todo.create({
@@ -39,6 +46,14 @@ export default function App() {
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id });
   }
+
+  async function makeAPICall() {
+    return client.models.Todo.create({ content: 'New Todo' });
+  }
+  const promise = makeAPICall();
+  
+  //以下の場合はリクエストはキャンセルされません。
+  client.cancel(promise, 'my error message');
 
   return (
     
@@ -60,7 +75,7 @@ export default function App() {
       新しいTODOを作成してみてください🐻
         <br />
         <a href='https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/'>
-          🔰
+          チュートリアル🔰
         </a>
       </div>
           <button onClick={signOut}>サインアウト</button>
