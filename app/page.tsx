@@ -18,7 +18,7 @@ export default function App() {
 
   const [todos, setTodos] = useState<Array<Schema['Todo']['type']>>([]);
 
-  const listTodos = () => {
+  function listTodos() {
     client.models.Todo.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
     });
@@ -27,19 +27,12 @@ export default function App() {
   useEffect(() => {
     listTodos();
   }, []);
-
-  //作成
-  const createTodo = () => {
-      client.models.Todo.create({
-      content: window.prompt('Todo content'),
-    });
-  }
-
-  //カテゴリ
-  const createCaregory = () => {
+  
+  //TODO作成
+  function createTodo() {
     client.models.Todo.create({
-      content: window.prompt('Category content'),
-        })
+      content: window.prompt('TODO LISTに追加すること'),
+    });
   }
 
   //削除
@@ -54,8 +47,8 @@ export default function App() {
       {({ signOut, user }) => (
 
     <main>
-      <h1>💗TODO LIST💗</h1>
-      <button onClick={createTodo}>+ new</button>
+      <h1> 💗TODO LIST💗</h1>
+      <button onClick={createTodo}>+ new🌠</button>
       <ul>
         {todos.map((todo) => (
           <li onClick={() => deleteTodo(todo.id)} key={todo.id}>
