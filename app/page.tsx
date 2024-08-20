@@ -28,13 +28,6 @@ export default function App() {
     listTodos();
   }, []);
 
-  //カテゴリ
-  fubnction createCategory() {
-    client.models.Todo.create({
-      content: window.prompt('カテゴリー'),
-      })
-  }
-
   //TODO作成
   function createTodo() {
     client.models.Todo.create({
@@ -46,14 +39,6 @@ export default function App() {
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id });
   }
-
-  async function makeAPICall() {
-    return client.models.Todo.create({ content: 'New Todo' });
-  }
-  const promise = makeAPICall();
-  
-  //以下の場合はリクエストはキャンセルされません。
-  client.cancel(promise, 'my error message');
 
   return (
     
