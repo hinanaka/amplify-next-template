@@ -67,7 +67,7 @@ export default function App() {
       新しいTODOを作成してみてください🐻
         <br />
         <a href='https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components/'>
-          Review next steps of this tutorial.
+          🔰
         </a>
       </div>
           <button onClick={signOut}>サインアウト</button>
