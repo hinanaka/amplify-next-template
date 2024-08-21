@@ -12,7 +12,9 @@ import '@aws-amplify/ui-react/styles.css'
 
 Amplify.configure(outputs);
 
-const client = generateClient<Schema>();
+const client = generateClient<Schema>({
+  authMode: 'apiKey',
+});
 
 export default function App() {
 
@@ -32,7 +34,7 @@ export default function App() {
   function createTodo() {
     client.models.Todo.create({
       content: window.prompt('TODO LISTに追加すること'),
-      category: window.prompt('カテゴリ'),
+      //category: window.prompt('カテゴリ'),
     });
   }
 
