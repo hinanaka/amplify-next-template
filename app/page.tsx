@@ -32,6 +32,7 @@ export default function App() {
   function createTodo() {
     client.models.Todo.create({
       content: window.prompt('TODO LISTに追加すること'),
+      category: window.prompt('カテゴリ'),
     });
   }
 
@@ -47,7 +48,7 @@ export default function App() {
       {({ signOut, user }) => (
 
     <main>
-      <h1> 💗TODO LIST💗</h1>
+      <h1>💗TODO LIST💗</h1>
       <button onClick={createTodo}>+ new🌠</button>
       <ul>
         {todos.map((todo) => (
