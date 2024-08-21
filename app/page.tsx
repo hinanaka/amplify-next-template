@@ -33,8 +33,8 @@ export default function App() {
   //TODO作成
   function createTodo() {
     client.models.Todo.create({
-      content: window.prompt('TODO LISTに追加すること'),
-      category: window.prompt('カテゴリ'),
+      content: window.prompt('TODO'),
+      category: window.prompt('CATEGORY'),
     });
   }
 
