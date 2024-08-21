@@ -119,10 +119,6 @@
     text-align: center;
   }
 
-  .category {
-    padding: 4rem;
-  }
-
   .card {
     padding: 1rem 2.5rem;
   }
@@ -209,3 +205,4 @@
     transform: rotate(0deg);
   }
 }
+
