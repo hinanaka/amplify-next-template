@@ -1,15 +1,16 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
 /*== STEP 1 ===============================================================
-The section below creates a Todo database table with a "content" field. Try
-adding a new "isDone" field as a boolean. The authorization rule below
-specifies that any user authenticated via an API key can "create", "read",
-"update", and "delete" any "Todo" records.
+以下のセクションでは、「コンテンツ」フィールドを持つ Todo データベース テーブルを作成します。試す
+新しい「isDone」フィールドをboolean値として追加します。以下の認可ルール
+API キーを介して認証されたすべてのユーザーが「作成」、「読み取り」、
+「Todo」レコードを「更新」および「削除」します。
 =========================================================================*/
 const schema = a.schema({
   Todo: a
     .model({
       content: a.string(),
+      category: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });
@@ -34,6 +35,13 @@ WORK IN THE FRONTEND CODE FILE.)
 Using JavaScript or Next.js React Server Components, Middleware, Server 
 Actions or Pages Router? Review how to generate Data clients for those use
 cases: https://docs.amplify.aws/gen2/build-a-backend/data/connect-to-API/
+フロントエンドのソースコードに移動します。クライアント側のコードから、
+テーブルに対して CRUDL リクエストを行うデータ クライアント。 (このスニペットは、
+フロントエンド コード ファイルで作業します。)
+
+JavaScript または Next.js の使用 React サーバー コンポーネント、ミドルウェア、サーバー 
+アクションまたはページルーター?これらの用途に使用するデータ クライアントを生成する方法を確認します。
+ケース:
 =========================================================================*/
 
 /*
