@@ -18,22 +18,8 @@ const client = generateClient<Schema>({
 });
 
 export default function App() {
-
-  const [todos, setTodos] = useState<Array<Schema['Todo']['type']>>([]);
-
-
-  const MyCheckbox = () => {
-    return (
-      <CheckboxField
-        label="完了"
-        name="agreement"
-        value="agree"
-      />
-    );
-  };
   
-  export default MyCheckbox;
-
+  const [todos, setTodos] = useState<Array<Schema['Todo']['type']>>([]);
 
   function listTodos() {
     client.models.Todo.observeQuery().subscribe({
@@ -58,6 +44,11 @@ export default function App() {
     client.models.Todo.delete({ id });
   }
 
+  const checkbox = document.getElementById('myCheckbox');
+    if (checkbox.checked) {
+    const value = checkbox.value;
+    console.log(value);
+
   return (
     
     //ログイン
@@ -73,6 +64,9 @@ export default function App() {
             {todo.category} ・ {todo.content}
           </li>
         ))}
+        
+        <input type="checkbox" id="myCheckbox" value="完了"></input>
+
       </ul>
       <div>
       新しいTODOを作成してみてください🐻
