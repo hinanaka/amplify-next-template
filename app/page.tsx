@@ -7,9 +7,10 @@ import { Amplify } from 'aws-amplify';
 import { generateClient } from 'aws-amplify/data';
 import { useEffect, useState } from 'react';
 import './../app/app.css';
-import { Authenticator,CheckboxField } from '@aws-amplify/ui-react'
-import '@aws-amplify/ui-react/styles.css'
 
+//ログイン認証
+import { Authenticator,CheckboxField,ThemeProvider } from '@aws-amplify/ui-react'
+import '@aws-amplify/ui-react/styles.css'
 
 Amplify.configure(outputs);
 
@@ -44,10 +45,10 @@ export default function App() {
     client.models.Todo.delete({ id });
   }
 
-  const checkbox = document.getElementById('myCheckbox');
+  /*const checkbox = document.getElementById('myCheckbox');
     if (checkbox.checked) {
     const value = checkbox.value;
-    console.log(value);
+    console.log(value);*/
 
   return (
     
@@ -64,8 +65,8 @@ export default function App() {
             {todo.category} ・ {todo.content}
           </li>
         ))}
-        
-        <input type="checkbox" id="myCheckbox" value="完了"></input>
+
+      {/* <input type="checkbox" id="myCheckbox" value="完了"></input> */}
 
       </ul>
       <div>
