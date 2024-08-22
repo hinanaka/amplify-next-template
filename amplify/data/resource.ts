@@ -1,4 +1,5 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+import { TodoCreateForm } from './ui-components';
 
 /*== STEP 1 ===============================================================
 以下のセクションでは、「コンテンツ」フィールドを持つ Todo データベース テーブルを作成します。試す
@@ -9,8 +10,9 @@ API キーを介して認証されたすべてのユーザーが「作成」、�
 const schema = a.schema({
   Todo: a
     .model({
-      content: a.string(),
+      isDone: a.boolean(),
       category: a.string(),
+      content: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });
@@ -44,13 +46,12 @@ JavaScript または Next.js の使用 React サーバー コンポーネント�
 ケース:
 =========================================================================*/
 
-/*
 "use client"
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
 
 const client = generateClient<Schema>() // use this Data client for CRUDL requests
-*/
+
 
 /*== STEP 3 ===============================================================
 Fetch records from the database and use them in your frontend component.
@@ -62,3 +63,4 @@ Fetch records from the database and use them in your frontend component.
 // const { data: todos } = await client.models.Todo.list()
 
 // return <ul>{todos.map(todo => <li key={todo.id}>{todo.content}</li>)}</ul>
+
