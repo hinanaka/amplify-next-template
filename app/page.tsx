@@ -7,6 +7,7 @@ import { Amplify } from 'aws-amplify';
 import { generateClient } from 'aws-amplify/data';
 import { useEffect, useState } from 'react';
 import './../app/app.css';
+import { TodoCreateForm } from './ui-components';
 
 //ログイン認証
 import { Authenticator,CheckboxField,ThemeProvider } from '@aws-amplify/ui-react'
@@ -45,14 +46,17 @@ export default function App() {
     client.models.Todo.delete({ id });
   }
 
-  /*const checkbox = document.getElementById('myCheckbox');
-    if (checkbox.checked) {
-    const value = checkbox.value;
-    console.log(value);*/
+  function App() {
+    return <TodoCreateForm />;
+  }
+  
+  export default App;
 
+  
   return (
     
     //ログイン
+    <ThemeProvider>
     <Authenticator>
       {({ signOut, user }) => (
 
@@ -65,9 +69,6 @@ export default function App() {
             {todo.category} ・ {todo.content}
           </li>
         ))}
-
-      {/* <input type="checkbox" id="myCheckbox" value="完了"></input> */}
-
       </ul>
       <div>
       新しいTODOを作成してみてください🐻
@@ -80,5 +81,6 @@ export default function App() {
     </main>
       )}
       </Authenticator>
+      </ThemeProvider>
   );
 }
